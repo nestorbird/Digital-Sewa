@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include digital_seva *.css
+recursive-include digital_seva *.csv
+recursive-include digital_seva *.html
+recursive-include digital_seva *.ico
+recursive-include digital_seva *.js
+recursive-include digital_seva *.json
+recursive-include digital_seva *.md
+recursive-include digital_seva *.png
+recursive-include digital_seva *.py
+recursive-include digital_seva *.svg
+recursive-include digital_seva *.txt
+recursive-exclude digital_seva *.pyc
