@@ -82,9 +82,9 @@ def update_status(type,break_log=None):
 def answer_by_agent():
     data=frappe.safe_decode(frappe.local.request.get_data())
     keys=frappe.parse_json(data)
-    agent_id=set(map(lambda x : x.get("id"),filter(lambda x : x["type"]=="Agent",keys['call_flow'])))
+    agent_id=list(filter(lambda x : x.get("num")==keys['agent_number'],filter(lambda x : x["type"]=="Agent",keys['call_flow'])))
     if keys["agent_number"]:
-        agent=frappe.get_doc("Agent",{"agent_id":list(agent_id)[0]})
+        agent=frappe.get_doc("Agent",{"agent_id":list(agent_id)[0]['id']})
         call_json = {
                 "unique_no": keys['uuid'],
                 "mobile_number": keys['customer_no_with_prefix '],
