@@ -13,8 +13,8 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/digital_seva/css/digital_seva.css"
-# app_include_js = "/assets/digital_seva/js/digital_seva.js"
+app_include_css = "/assets/digital_seva/css/digital_seva.css"
+app_include_js = "/assets/digital_seva/js/digital_seva.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/digital_seva/css/digital_seva.css"
@@ -188,3 +188,8 @@ user_data_fields = [
 #	"digital_seva.auth.validate"
 # ]
 
+default_mail_footer = """
+	<span>
+		
+	</span>
+"""

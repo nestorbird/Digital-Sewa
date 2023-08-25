@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-01-06 16:01:06.267662",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "agent_user_id",
+  "agent_number",
+  "sr_no",
+  "column_break_4",
+  "call_made_from",
+  "customer_number",
+  "caller_id",
+  "section_break_7",
+  "call"
+ ],
+ "fields": [
+  {
+   "fieldname": "agent_user_id",
+   "fieldtype": "Link",
+   "label": "Agent User ID",
+   "options": "User"
+  },
+  {
+   "fieldname": "agent_number",
+   "fieldtype": "Data",
+   "label": "Agent Number"
+  },
+  {
+   "fieldname": "sr_no",
+   "fieldtype": "Data",
+   "label": "SR No."
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "call_made_from",
+   "fieldtype": "Select",
+   "label": "Call Made From",
+   "options": "\nCustomer\nAgent"
+  },
+  {
+   "fieldname": "customer_number",
+   "fieldtype": "Data",
+   "label": "Customer Number"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "call",
+   "fieldtype": "Button",
+   "label": "Call"
+  },
+  {
+   "fieldname": "caller_id",
+   "fieldtype": "Data",
+   "label": "Caller ID"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-03-01 11:34:00.554103",
+ "modified_by": "Administrator",
+ "module": "Dialer Integration",
+ "name": "Dialer Demo",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

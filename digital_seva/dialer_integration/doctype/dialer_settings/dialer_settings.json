@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-23 11:43:05.093953",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "integration",
+  "base_url",
+  "authorization"
+ ],
+ "fields": [
+  {
+   "fieldname": "integration",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Integration",
+   "options": "Servetel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "base_url",
+   "fieldtype": "Data",
+   "label": "Base URL"
+  },
+  {
+   "fieldname": "authorization",
+   "fieldtype": "Small Text",
+   "label": "Authorization"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-08-24 01:21:32.301304",
+ "modified_by": "Administrator",
+ "module": "Dialer Integration",
+ "name": "Dialer Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
