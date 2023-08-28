@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:AGLOG-{YY}-{MM}-{DD}-{#####}",
  "creation": "2023-08-24 00:07:11.681427",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -8,11 +9,14 @@
  "field_order": [
   "start_time",
   "end_time",
+  "answer_time",
   "internal_duration",
   "column_break_bb4px",
   "dialer_duration",
   "hold_duration",
-  "no_of_hold"
+  "no_of_hold",
+  "ds_ticket",
+  "call_id"
  ],
  "fields": [
   {
@@ -48,11 +52,28 @@
    "fieldname": "no_of_hold",
    "fieldtype": "Int",
    "label": "No of Hold"
+  },
+  {
+   "fieldname": "ds_ticket",
+   "fieldtype": "Link",
+   "label": "DS Ticket",
+   "options": "DS Ticket"
+  },
+  {
+   "fieldname": "call_id",
+   "fieldtype": "Data",
+   "label": "Call Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "answer_time",
+   "fieldtype": "Datetime",
+   "label": "Answer Time"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-24 00:07:11.681427",
+ "modified": "2023-08-28 16:30:37.770874",
  "modified_by": "Administrator",
  "module": "Digital Seva",
  "name": "Agent Log",

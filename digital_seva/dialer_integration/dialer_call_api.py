@@ -63,7 +63,6 @@ def data_feed():
 
 @frappe.whitelist(allow_guest=True)
 def update_status(type,break_log=None):
-    agent_number=frappe.db.get_value("Agent",frappe.session.user,"agent_number")
     status="unblock" if type=="Available" else "block"
     agent_id=frappe.db.get_value("Agent",frappe.session.user,"agent_id")
     url= f"https://api.servetel.in/v1/agent/{agent_id}/{status}"
@@ -79,7 +78,7 @@ def update_status(type,break_log=None):
 
 
 @frappe.whitelist(allow_guest=True)
-def answer_by_agent():
+def dial_on_agent():
     data=frappe.safe_decode(frappe.local.request.get_data())
     keys=frappe.parse_json(data)
     agent_id=list(filter(lambda x : x["type"]=="Agent" and x['num']==keys['agent_number'],keys['call_flow']))
@@ -87,15 +86,15 @@ def answer_by_agent():
         agent=frappe.get_doc("Agent",{"agent_id":list(agent_id)[0]['id']})
         call_json = {
                 "unique_no": keys['uuid'],
-                "mobile_number": keys['customer_no_with_prefix '],
-                "user":agent.name
+                "mobile_number": keys['caller_id_number'],
+                "user":agent.name,
+                "call_id":keys['call_id']
                 }
-        create_dialer_support(call_json)
-        frappe.publish_realtime( "call_connected", message="Busy", user=agent.name ) 
+        create_dialer_support(call_json) 
 
 
 @frappe.whitelist()
-def create_dialer_support(data,):
+def create_dialer_support(data):
     if not data.get("unique_no"):
         return failed_response(message="Please Provide Unique Number")
     if not data.get("mobile_number"):
@@ -110,6 +109,7 @@ def create_dialer_support(data,):
         new_dialer_support = frappe.new_doc("DS Ticket")
         new_dialer_support.unique_no = data.get("unique_no")
         new_dialer_support.mobile_number = data.get("mobile_number")
+        new_dialer_support.call_id=data.get("call_id")
         new_dialer_support.is_new_ticket = 1
         new_dialer_support.save(ignore_permissions=True)
         frappe.db.commit()
@@ -117,8 +117,45 @@ def create_dialer_support(data,):
         url = str(frappe.utils.get_url()) + "/app/ds-ticket/" + new_dialer_support.name
         datas = {"url": url,
                 "unique_no": new_dialer_support.unique_no, "message": "Redirecting to Incoming Call..."}
+    make_agent_log(data)            
     frappe.publish_realtime(
         "msgprint", message=datas, user=data.get('user')
     )
 
 
+@frappe.whitelist(allow_guest=True)
+def hang_up():
+    data=frappe.form_dict
+    if data.get("call_status")=="answered" and data.get("call_connected") and data.get("call_id"):
+        agent_data=data.get("answered_agent")
+        if type(agent_data)!="dict":
+            agent_data=json.loads(agent_data)
+        if frappe.db.exists("Agent Log",{"call_id":data.get("call_id")}):
+            agent_log=frappe.get_doc("Agent Log",{"call_id":data.get("call_id")})
+            agent_log.start_time=data.get("start_stamp")
+            agent_log.answer_time=data.get("answer_stamp")
+            agent_log.end_time=data.get("end_stamp")
+            agent_log.dialer_duration=data.get("duration")
+            agent_log.hold_duration=data.get("agent_ring_time")
+            agent_log.no_of_hold=data.get("outbound_sec")
+            agent_log.ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data.get("customer_no_with_prefix")},"name")
+            agent_log.save(ignore_permissions=True)
+        agent=frappe.get_doc("Agent",{"agent_id":agent_data["id"]})
+        frappe.publish_realtime( "call_disconnected", message="Available", user=agent.name )
+
+
+def make_agent_log(data):
+    agent_log=frappe.new_doc("Agent Log")
+    agent_log.start_time=frappe.utils.now()
+    agent_log.call_id=data.get("call_d")
+    agent_log.ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data.get("customer_no_with_prefix")},"name")
+    agent_log.save(ignore_permissions=True)
+
+
+@frappe.whitelist(allow_guest=True)
+def answer_by_agent():
+    data=frappe.safe_decode(frappe.local.request.get_data())
+    keys=frappe.parse_json(data)
+    if frappe.db.exists("Agent",{"agent_number":keys["answer_agent_number"]}):
+        agent=frappe.get_doc("Agent",{"agent_number":keys["answer_agent_number"]})
+        frappe.publish_realtime( "call_connected", message="Busy", user=agent.name )

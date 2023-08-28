@@ -7,7 +7,14 @@ function codeAddress() {
         method:'digital_seva.digital_seva.doctype.ds_ticket.ds_ticket.break_links',
         args:{}
     }).then((res) => {
-        console.log("res",res.message)
+        console.log("res",typeof(res.message))
+        if (res.message==true){
+            $(".dropdown-help").replaceWith(`
+            <a class="nav-link" style="margin: auto; box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190);" data-toggle="dropdown" href="#" onclick="return false;">On Call
+            `)
+
+        }
+        else if (res.message.length>0){
         for (var data in res.message) {
             console.log(data)
 
@@ -32,6 +39,47 @@ function codeAddress() {
                      
                      ">           ${res.message[data].name}          </a>`
         }
+        $(".dropdown-help").replaceWith(`
+        <li class="nav-item dropdown dropdown-help dropdown-mobile d-none d-lg-block">
+        <button class="btn btn-default icon-btn" style="padding: 5px">
+      <a class="nav-link" data-toggle="dropdown" href="#" onclick="return false;">Take Break
+      <span>
+              <svg class="icon icon-xs"><use href="#icon-small-down"> </use> </svg>
+      </span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" id="toolbar-help" role="menu">
+      <div id="help-links"></div>
+             <div class="dropdown-divider documentation-links" style="display: none;"></div> 
+             ${break_link}
+      </div>
+      </button>
+      </li>
+      `);
+      }
+      else{
+        $(".dropdown-help").replaceWith(`
+        <a class="nav-link" style="margin: auto; box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190);" data-toggle="dropdown" href="#" onclick="
+         frappe.call({
+                method: 'digital_seva.digital_seva.doctype.ds_ticket.ds_ticket.pause_unpause_client',
+                args: {
+                        'state': 'unpause',
+                        'type': 'Unpause'
+                    },
+                callback: (res) => {
+                    frappe.msgprint({
+                        title: __('Notification'),
+                        indicator: 'green',
+                        message: 'The Break has Ended'
+                    });
+                    window.location.reload()
+                }
+         });
+         ;">End Break
+         `);
+        
+
+      } 
+        
         const params = window.location.origin
         this.reportbutton = $(`
         <div class="dropdown">
@@ -64,101 +112,11 @@ function codeAddress() {
             window.location = params + "/app/query-report/" + "Ticket Summary Report";
         });
 
-    //     $(".dropdown-help").replaceWith(`
-    //     <li  name="subject" style="padding: 2px; margin: 6px;" class="btn">        
-    //     <select " class="form-control" id="select1" onchange="getData(this.value)">
-    //     // <option class="a" value="A">Available</option>
-    //     // <option class="c" value="C">Busy</option>
-    //     </select>  
-    //      </li>
-      
-        
-    //   `);
-    $(".dropdown-help").replaceWith(`
-    <li class="nav-item dropdown dropdown-help dropdown-mobile d-none d-lg-block">
-    <button class="btn btn-default icon-btn" style="padding: 5px">
-          <a class="nav-link" data-toggle="dropdown" href="#" onclick="return false;">Break
-          <span>
-                  <svg class="icon icon-xs"><use href="#icon-small-down"> </use> </svg>
-          </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" id="toolbar-help" role="menu">
-          <div id="help-links"></div>
-                 <div class="dropdown-divider documentation-links" style="display: none;"></div> 
-                 ${break_link}
-                 <a class="dropdown-item"  onclick="
-                 frappe.call({
-                        method: 'digital_seva.digital_seva.doctype.ds_ticket.ds_ticket.pause_unpause_client',
-                        args: {
-                                'state': 'unpause',
-                                'type': 'Unpause'
-                            },
-                        callback: (res) => {
-                            frappe.msgprint({
-                                title: __('Notification'),
-                                indicator: 'green',
-                                message: 'The Break has Ended'
-                            });
-                            window.location.reload()
-                        }
-                 });
-                 
-                 ">          Unpause Incoming Call          </a>
-          </div>
-          </button>
-    </li>
-  `);
-//   window.location.reload()
-
-    //   $(".form-control").change(function(){
-    //     var $option = $(this).find('option:selected');
-    //     var text = $option.text()
-    //     frappe.call({
-    //         method: 'digital_seva.dialer_integration.dialer_call_api.update_status',
-    //         args: {
-    //                 'type': text
-    //             },
-    //         callback: (res) => {
-    //             let fail=JSON.stringify(res.message['message'])
-    //             let pass=JSON.stringify(res.message['status'])
-    //             console.log(fail,pass);
-    //             if (fail){
-    //                 frappe.db.set_value("Agent",frappe.session.user,"status",text)
-    //             frappe.msgprint('<p><b><i>' + fail  + '</p></b></i>');
-    
-    //         }
-        
-    //         else{
-
-    //             if (pass.replace(/^"(.+(?="$))"$/, '$1')=="Available"){
-        
-    //          frappe.msgprint('<p><b><i>Status has been changed , Now Agent is Available</p></b></i>');
-    //             }
-    //             else{
-    //                 frappe.msgprint('<p><b><i>Status has been changed , Now Agent is Busy</p></b></i>');
-    //             }
-
-    //         }
-        
-    //     }
-    //  });
-    //   });
-
     });
 }
 
 window.onload = codeAddress;
 $(document).ready(function () {
-        // frappe.db.exists("Agent",frappe.session.user).then(r=>{
-        //     if (r===True){
-        //     frappe.call({
-        //         method: 'digital_seva.dialer_integration.dialer_call_api.update_status',
-        //         args: {
-        //                 'type': 'Available'
-        //             }
-        //          });
-        //         }
-        //      })
     
     // hide search bar
     // document.getElementsByClassName('search-bar')[0].style.visibility = 'hidden';
@@ -221,7 +179,7 @@ $(document).ready(function () {
 
             console.log(data,"--------------call_connected")
 
-            document.getElementById("select1").selectedIndex = 1; 
+            // document.getElementById("select1").selectedIndex = 1; 
 
             frappe.call({
                 method: 'digital_seva.dialer_integration.dialer_call_api.update_status',
@@ -230,6 +188,7 @@ $(document).ready(function () {
                     }
 
     });
+    window.location.reload()
 });
 
 
@@ -238,7 +197,7 @@ $(document).ready(function () {
 
         console.log(data,"call_disconnected")
 
-        document.getElementById("select1").selectedIndex = 0; 
+        // document.getElementById("select1").selectedIndex = 0; 
         
         frappe.call({
             method: 'digital_seva.dialer_integration.dialer_call_api.update_status',
@@ -247,8 +206,9 @@ $(document).ready(function () {
                 }
 
 });
-
+    window.location.reload()
     });
+
 
     document.getElementsByClassName("navbar-brand ")[0].onclick = function () {
         document.getElementsByClassName("navbar-brand ")[0].href = "/app/ds-ticket";
