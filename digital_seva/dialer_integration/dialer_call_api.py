@@ -176,3 +176,16 @@ def answer_by_agent():
         agent=frappe.get_doc("Agent",{"agent_number":keys["answer_agent_number"]})
         frappe.db.set_value("Agent",agent.name,{"status":"Busy","break_log": ""})
         # frappe.publish_realtime( "call_connected", message="Busy", user=agent.name )
+
+@frappe.whitelist(allow_guest=True)
+def trigger():
+    if frappe.local.request.get_data():
+        data = frappe.parse_json(frappe.safe_decode(frappe.local.request.get_data()))
+    if frappe.form_dict:
+        data = frappe.form_dict
+    if frappe.local.request.args:
+        data = frappe.local.request.args
+    doc = frappe.new_doc("Webhook Testing")
+    doc.body = data
+    doc.save()
+    return
