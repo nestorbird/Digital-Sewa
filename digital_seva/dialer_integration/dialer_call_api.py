@@ -127,7 +127,7 @@ def hang_up():
     data = frappe.safe_decode(frappe.local.request.get_data())
     data=frappe.parse_json(data)
     if data["call_connected"] and data["call_id"]:
-        ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data["customer_no_with_prefix "]},"name") 
+        ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data["customer_no_with_prefix "] if "+" in data["customer_no_with_prefix "] else "+"+data["customer_no_with_prefix "]},"name") 
         if data["direction"]=="inbound":    
             if frappe.db.exists("Agent Log",{"call_id":data["call_id"]}):
                 agent_log=frappe.get_doc("Agent Log",{"call_id":data["call_id"]})
