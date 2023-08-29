@@ -15,7 +15,7 @@ def dial_call(mobile_number):
 
     body={
     "agent_number": agent_number,
-    "caller_id": "08069858830",
+    "caller_id": frappe.db.get_single_value("Dialer Settings",'caller_id'),
     "destination_number":mobile_number if "+91" in mobile_number else "+91"+ mobile_number
     }
     headers={
@@ -30,7 +30,7 @@ def dial_call(mobile_number):
         log_data={
                 "mobile_number":body['destination_number'] ,
                 "user":frappe.session.user,
-                "call_id":"08069858830"
+                "call_id":frappe.db.get_single_value("Dialer Settings",'caller_id')
         }
         make_agent_log(log_data)
         frappe.db.set_value("Agent",frappe.session.user,{"status":"Busy","break_log":""}) 

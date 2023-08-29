@@ -8,7 +8,8 @@
  "field_order": [
   "integration",
   "base_url",
-  "authorization"
+  "authorization",
+  "caller_id"
  ],
  "fields": [
   {
@@ -28,12 +29,17 @@
    "fieldname": "authorization",
    "fieldtype": "Small Text",
    "label": "Authorization"
+  },
+  {
+   "fieldname": "caller_id",
+   "fieldtype": "Data",
+   "label": "Caller Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-08-24 01:21:32.301304",
+ "modified": "2023-08-29 16:46:30.382044",
  "modified_by": "Administrator",
  "module": "Dialer Integration",
  "name": "Dialer Settings",
