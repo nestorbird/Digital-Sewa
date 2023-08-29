@@ -16,7 +16,9 @@
   "hold_duration",
   "no_of_hold",
   "ds_ticket",
-  "call_id"
+  "call_id",
+  "agent",
+  "log_completions"
  ],
  "fields": [
   {
@@ -69,11 +71,23 @@
    "fieldname": "answer_time",
    "fieldtype": "Datetime",
    "label": "Answer Time"
+  },
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "Agent"
+  },
+  {
+   "default": "0",
+   "fieldname": "log_completions",
+   "fieldtype": "Check",
+   "label": "Log Completions"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 16:30:37.770874",
+ "modified": "2023-08-29 12:57:44.408015",
  "modified_by": "Administrator",
  "module": "Digital Seva",
  "name": "Agent Log",

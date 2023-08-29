@@ -1,5 +1,6 @@
 import frappe
 import  requests
+from digital_seva.dialer_integration.dialer_call_api import make_agent_log
 
 @frappe.whitelist(allow_guest=True)
 def contact_number(doctype, txt, searchfield, start, page_len, filters):
@@ -25,4 +26,12 @@ def dial_call(mobile_number):
     response = requests.post(base_url, headers=headers,json=body)
     data = response.json()
     print("data",data)
+    if data['success']:
+        log_data={
+                "mobile_number":body['destination_number'] ,
+                "user":frappe.session.user,
+                "call_id":"08069858830"
+        }
+        make_agent_log(log_data)
+        frappe.db.set_value("Agent",frappe.session.user,{"status":"Busy","break_log":""}) 
     return data
