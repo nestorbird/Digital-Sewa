@@ -124,38 +124,37 @@ def create_dialer_support(data):
 
 @frappe.whitelist(allow_guest=True)
 def hang_up():
-    data=frappe.form_dict
-    if data.get("call_connected") and data.get("call_id"):
-        agent_data=data.get("answered_agent")
-        ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data.get("customer_no_with_prefix")},"name")
-        if type(agent_data)!="dict":
-            agent_data=json.loads(agent_data)  
-        if data.get("direction")=="inbound":    
-            if frappe.db.exists("Agent Log",{"call_id":data.get("call_id")}):
-                agent_log=frappe.get_doc("Agent Log",{"call_id":data.get("call_id")})
-                agent_log.start_time=data.get("start_stamp")
-                agent_log.answer_time=data.get("answer_stamp")
-                agent_log.end_time=data.get("end_stamp")
-                agent_log.dialer_duration=data.get("duration")
-                agent_log.hold_duration=data.get("agent_ring_time")
-                agent_log.no_of_hold=data.get("outbound_sec")
-                agent_log.ds_ticket=ds_ticket
-                agent_log.log_completions=1
-                agent_log.save(ignore_permissions=True)
-        elif data.get("direction")=="clicktocall":
-            if frappe.db.exists("Agent Log",{"ds_ticket":ds_ticket,"log_completions":0}):
-                agent_log=frappe.get_doc("Agent Log",{"ds_ticket":ds_ticket,"log_completions":0})
-                agent_log.start_time=data.get("start_stamp")
-                agent_log.answer_time=data.get("answer_stamp")
-                agent_log.end_time=data.get("end_stamp")
-                agent_log.dialer_duration=data.get("duration")
-                agent_log.hold_duration=data.get("agent_ring_time")
-                agent_log.no_of_hold=data.get("outbound_sec")
-                agent_log.ds_ticket=ds_ticket
-                agent_log.log_completions=1
-                agent_log.save(ignore_permissions=True)                  
-        agent=frappe.get_doc("Agent",{"agent_id":agent_data["id"]})
-        frappe.db.set_value("Agent",agent.name,{"status":"Available","break_log": ""})
+    if frappe.local.request.get_data():
+        data = frappe.parse_json(frappe.safe_decode(frappe.local.request.get_data()))
+        if data.get("call_connected") and data.get("call_id"):
+            agent_data=data.get("answered_agent")
+            ds_ticket=frappe.db.get_value("DS Ticket",{"mobile_number":data.get("customer_no_with_prefix")},"name") 
+            if data.get("direction")=="inbound":    
+                if frappe.db.exists("Agent Log",{"call_id":data.get("call_id")}):
+                    agent_log=frappe.get_doc("Agent Log",{"call_id":data.get("call_id")})
+                    agent_log.start_time=data.get("start_stamp")
+                    agent_log.answer_time=data.get("answer_stamp")
+                    agent_log.end_time=data.get("end_stamp")
+                    agent_log.dialer_duration=data.get("duration")
+                    agent_log.hold_duration=data.get("agent_ring_time")
+                    agent_log.no_of_hold=data.get("outbound_sec")
+                    agent_log.ds_ticket=ds_ticket
+                    agent_log.log_completions=1
+                    agent_log.save(ignore_permissions=True)
+            elif data.get("direction")=="clicktocall":
+                if frappe.db.exists("Agent Log",{"ds_ticket":ds_ticket,"log_completions":0}):
+                    agent_log=frappe.get_doc("Agent Log",{"ds_ticket":ds_ticket,"log_completions":0})
+                    agent_log.start_time=data.get("start_stamp")
+                    agent_log.answer_time=data.get("answer_stamp")
+                    agent_log.end_time=data.get("end_stamp")
+                    agent_log.dialer_duration=data.get("duration")
+                    agent_log.hold_duration=data.get("agent_ring_time")
+                    agent_log.no_of_hold=data.get("outbound_sec")
+                    agent_log.ds_ticket=ds_ticket
+                    agent_log.log_completions=1
+                    agent_log.save(ignore_permissions=True)                  
+            agent=frappe.get_doc("Agent",{"agent_id":agent_data["id"]})
+            frappe.db.set_value("Agent",agent.name,{"status":"Available","break_log": ""})
         # frappe.publish_realtime( "call_disconnected", message="Available", user=agent.name )
 
 
