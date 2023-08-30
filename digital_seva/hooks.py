@@ -83,6 +83,71 @@ app_include_js = "/assets/digital_seva/js/digital_seva.js"
 #	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+fixtures = [
+     {
+        "dt": "Custom Field", "filters":
+        [
+            [
+                "name", "in", [
+						"DS Ticket-title",
+                        "DS Ticket-blog_subscriber",
+                        "DS Ticket-unsubscribed",
+                        "DS Ticket-language",
+                        "DS Ticket-territory",
+                        "DS Ticket-company",
+                        "DS Ticket-column_break_534al",
+                        "DS Ticket-request_type",
+                        "DS Ticket-industry",
+                        "DS Ticket-market_segment",
+                        "DS Ticket-type",
+                        "DS Ticket-more_info",
+                        "DS Ticket-website",
+                        "DS Ticket-fax",
+                        "DS Ticket-mobile_no",
+                        "DS Ticket-phone",
+                        "DS Ticket-contact_section",
+                        "DS Ticket-country",
+                        "DS Ticket-contact_html",
+                        "DS Ticket-column_break_wey1j",
+                        "DS Ticket-county",
+                        "DS Ticket-address_line_2",
+                        "DS Ticket-address_line_1",
+                        "DS Ticket-address_title",
+                        "DS Ticket-address_type",
+                        "DS Ticket-address_html",
+                        "DS Ticket-address_info",
+                        "DS Ticket-notes",
+                        "DS Ticket-notes_section_",
+                        "DS Ticket-ends_on",
+                        "DS Ticket-contact_date",
+                        "DS Ticket-column_break_h3xl4",
+                        "DS Ticket-contact_by",
+                        "DS Ticket-section_break_rvgvx",
+                        "DS Ticket-image",
+                        "DS Ticket-campaign_name",
+                        "DS Ticket-source",
+                        "DS Ticket-gender",
+                        "DS Ticket-designation",
+                        "DS Ticket-salutation",
+                        "DS Ticket-status",
+                        "DS Ticket-lead_owner",
+                        "DS Ticket-column_break_zlxhn",
+                        "DS Ticket-company_name",
+                        "DS Ticket-lead_name",
+                        "DS Ticket-lead_details",
+                        "DS Ticket-organization_lead",
+                        "DS Ticket-section_break_qiahl"
+                ]]  
+        ]},
+
+]
+
+
+
+
+
+
+
 # DocType Class
 # ---------------
 # Override standard doctype classes

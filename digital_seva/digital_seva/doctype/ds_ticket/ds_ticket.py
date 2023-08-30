@@ -8,8 +8,57 @@ from frappe.utils import  now
 from digital_seva.dialer_integration.dialer_call_api import update_status
 
 class DSTicket(Document):
-	pass
+    def validate(doc, method=None):
+        if doc.is_new():
+            lead = frappe.new_doc("Lead")
+            lead.update({
+                "organization_lead": doc.organization_lead,  
+                "company_name": doc.company_name,
+                "email_id": doc.email_id,
+                "lead_owner": doc.lead_owner,
+                "status": doc.status,
+                "salutation": doc.salutation,
+                "designation": doc.designation,
+                "gender": doc.gender,
+                "source": doc.source,
+                "customer": doc.customer,
+                "campaign_name": doc.campaign_name,
+                "image": doc.image,
+                "contact_by": doc.contact_by,
+                "contact_date": doc.contact_date,
+                "ends_on": doc.ends_on,
+                "notes": doc.notes,
+                "address_type": doc.address_type,
+                "address_title": doc.address_title,
+                "address_line1":doc.address_line_1,
+                "city": doc.city,
+                "county": doc.county,
+                "state": doc.state,
+                "country": doc.country,
+                "phone": doc.phone,
+                "mobile_no": doc.mobile_no,
+                "fax": doc.fax,
+                "website": doc.website,
+                "type": doc.type,
+                "market_segment": doc.market_segment,
+                "industry": doc.industry,
+                "request_type": doc.request_type,
+                "company": doc.company,
+                "territory": doc.territory,
+                "language": doc.language,
+                "unsubscribed": doc.unsubscribed,
+                "blog_subscriber": doc.blog_subscriber,
+                "title": doc.title
+            })
+            if doc.email_id:
+                email_parts = doc.email_id.split("@")
+                if len(email_parts) > 1:
+                    lead.lead_name = email_parts[0]
+                else:
+                    lead.lead_name = doc.email_id
 
+            lead.insert(ignore_mandatory=True)
+    
 
 
 @frappe.whitelist()
