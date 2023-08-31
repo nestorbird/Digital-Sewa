@@ -136,7 +136,12 @@ fixtures = [
                         "DS Ticket-lead_name",
                         "DS Ticket-lead_details",
                         "DS Ticket-organization_lead",
-                        "DS Ticket-section_break_qiahl"
+                        "DS Ticket-section_break_qiahl",
+                        "DS Ticket-column_break_zllm4",
+                        "DS Ticket-email_id",
+                        "DS Ticket-pincode",
+                        "DS Ticket-state",
+                        "DS Ticket-city"
                 ]]  
         ]},
 
