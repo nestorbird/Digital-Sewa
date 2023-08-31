@@ -7,12 +7,15 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "date",
-  "customer",
   "mobile_number",
+  "column_break_legc1",
+  "customer",
+  "section_break_nq4ru",
+  "agent_logs_section",
+  "details",
+  "date",
   "customer_address",
   "city",
-  "column_break_bv1s7",
   "state",
   "pincode",
   "region",
@@ -26,8 +29,7 @@
   "call_recording_url",
   "unique_no",
   "is_new_ticket",
-  "section_break_zpvxx",
-  "details"
+  "section_break_zpvxx"
  ],
  "fields": [
   {
@@ -47,35 +49,37 @@
   {
    "fieldname": "customer_address",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Customer Address"
   },
   {
    "fieldname": "city",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "City"
-  },
-  {
-   "fieldname": "column_break_bv1s7",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "state",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "State"
   },
   {
    "fieldname": "pincode",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Pincode"
   },
   {
    "fieldname": "region",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Region"
   },
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Email Id"
   },
   {
@@ -95,24 +99,28 @@
   {
    "fieldname": "agent_extension",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Agent Extension",
    "read_only": 1
   },
   {
    "fieldname": "customer_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Customer Number",
    "read_only": 1
   },
   {
    "fieldname": "call_duration",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Call Duration",
    "read_only": 1
   },
   {
    "fieldname": "date_stamp",
    "fieldtype": "Datetime",
+   "hidden": 1,
    "label": "Date Stamp",
    "read_only": 1
   },
@@ -139,7 +147,8 @@
   },
   {
    "fieldname": "section_break_zpvxx",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "details",
@@ -153,11 +162,24 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Contact No./Mobile number"
+  },
+  {
+   "fieldname": "column_break_legc1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nq4ru",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "agent_logs_section",
+   "fieldtype": "Section Break",
+   "label": "Agent Logs"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-29 11:30:13.236144",
+ "modified": "2023-09-01 01:03:41.983521",
  "modified_by": "Administrator",
  "module": "Digital Seva",
  "name": "DS Ticket",

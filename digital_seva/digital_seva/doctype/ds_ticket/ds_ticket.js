@@ -65,6 +65,7 @@ frappe.ui.form.on('DS Ticket', {
         frm.doc.is_new_ticket = 0;
     },
 	onload: function (frm) {
+        $('.btn.btn-primary.btn-sm').hide();
         if (!frm.doc.__unsaved) {
             document.getElementsByClassName('form-reviews')[0].style.display = "none";
 
@@ -76,5 +77,32 @@ frappe.ui.form.on('DS Ticket', {
         if (!frm.doc.unique_no) {
             frm.set_value("unique_no", randString(16));
         }
-	}
+       if (!frm.custom_button_added) {
+            frm.add_custom_button('Create Lead', function () {
+                frm.save().then(() => {
+                    frappe.new_doc("Lead", {
+                        ds_name: frm.doc.name,
+                        source: "Cold Calling"
+                    });
+                });
+            });
+            frm.custom_button_added = true;
+        }
+        var customerField = "mobile_number";
+        if (frm.fields_dict[customerField]) {
+            frm.fields_dict[customerField].$wrapper.after(frm.custom_buttons['Create Lead']);
+        }
+    },
 });
+
+
+
+
+
+
+
+
+
+
+
+
