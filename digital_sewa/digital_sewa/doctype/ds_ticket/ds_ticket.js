@@ -60,7 +60,22 @@ frappe.ui.form.on('DS Ticket', {
                     frappe.throw("Please Enter the Customer Number")
                 }
         })
-	},
+        if (frm.doc.__unsaved) {
+            frm.set_df_property("create_lead", "hidden", 1);
+        }
+    },
+    after_save(frm) {
+        frm.set_df_property("create_lead", "hidden", 0);
+    },
+    create_lead(frm) {
+        var lead_doc = frappe.model.get_new_doc("Lead");
+
+        // Set the value of the "test_crm" field in the new Lead document
+        lead_doc.from_ticket = frm.doc.name;
+
+        // Open the Lead form for data entry
+        frappe.set_route("Form", "Lead", lead_doc.name);
+    },
     before_save: function (frm) {
         frm.doc.is_new_ticket = 0;
     },

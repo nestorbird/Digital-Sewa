@@ -12,6 +12,7 @@
   "customer_address",
   "city",
   "mobile_number",
+"create_lead",
   "column_break_l1njd",
   "state",
   "pincode",
@@ -160,7 +161,12 @@
    "fieldname": "agent_logs_section_section",
    "fieldtype": "Section Break",
    "label": "Agent Logs"
-  }
+},
+{
+    "fieldname": "create_lead",
+    "fieldtype": "Button",
+    "label": "Create Lead"
+}
  ],
  "index_web_pages_for_search": 1,
  "links": [],
