@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:AGLOG-{YY}-{MM}-{DD}-{#####}",
+ "creation": "2023-08-24 00:07:11.681427",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "start_time",
+  "end_time",
+  "answer_time",
+  "internal_duration",
+  "column_break_bb4px",
+  "dialer_duration",
+  "hold_duration",
+  "no_of_hold",
+  "ds_ticket",
+  "call_id",
+  "agent",
+  "log_completions"
+ ],
+ "fields": [
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Datetime",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Datetime",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "internal_duration",
+   "fieldtype": "Int",
+   "label": "Internal Duration"
+  },
+  {
+   "fieldname": "column_break_bb4px",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dialer_duration",
+   "fieldtype": "Int",
+   "label": "Dialer Duration"
+  },
+  {
+   "fieldname": "hold_duration",
+   "fieldtype": "Int",
+   "label": "Hold Duration"
+  },
+  {
+   "fieldname": "no_of_hold",
+   "fieldtype": "Int",
+   "label": "No of Hold"
+  },
+  {
+   "fieldname": "ds_ticket",
+   "fieldtype": "Link",
+   "label": "DS Ticket",
+   "options": "DS Ticket"
+  },
+  {
+   "fieldname": "call_id",
+   "fieldtype": "Data",
+   "label": "Call Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "answer_time",
+   "fieldtype": "Datetime",
+   "label": "Answer Time"
+  },
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "Agent"
+  },
+  {
+   "default": "0",
+   "fieldname": "log_completions",
+   "fieldtype": "Check",
+   "label": "Log Completions"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-29 12:57:44.408015",
+ "modified_by": "Administrator",
+ "module": "Digital Sewa",
+ "name": "Agent Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

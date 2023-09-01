@@ -13,8 +13,8 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/digital_sewa/css/digital_sewa.css"
-# app_include_js = "/assets/digital_sewa/js/digital_sewa.js"
+app_include_css = "/assets/digital_sewa/css/digital_sewa.css"
+app_include_js = "/assets/digital_sewa/js/digital_sewa.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/digital_sewa/css/digital_sewa.css"
@@ -82,6 +82,8 @@ app_license = "MIT"
 # has_permission = {
 #	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
+
+
 
 # DocType Class
 # ---------------
@@ -188,3 +190,8 @@ user_data_fields = [
 #	"digital_sewa.auth.validate"
 # ]
 
+default_mail_footer = """
+	<span>
+		
+	</span>
+"""
