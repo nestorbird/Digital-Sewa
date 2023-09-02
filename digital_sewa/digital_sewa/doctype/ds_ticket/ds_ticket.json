@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SEVA-{YYYY}-{MM}-{DD}-{######}",
+ "creation": "2023-08-23 23:53:40.669660",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "customer",
+  "customer_address",
+  "city",
+  "mobile_number",
+  "column_break_l1njd",
+  "state",
+  "pincode",
+  "region",
+  "email_id",
+  "extension_number",
+  "queue_number",
+  "agent_extension",
+  "customer_number",
+  "call_duration",
+  "date_stamp",
+  "call_recording_url",
+  "unique_no",
+  "is_new_ticket",
+  "section_break_q9v70",
+  "agent_logs_section_section",
+  "details"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Data",
+   "label": "Customer Address"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Region"
+  },
+  {
+   "fieldname": "extension_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Extension Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "queue_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Queue Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "agent_extension",
+   "fieldtype": "Data",
+   "label": "Agent Extension",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_number",
+   "fieldtype": "Data",
+   "label": "Customer Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "call_duration",
+   "fieldtype": "Data",
+   "label": "Call Duration",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_stamp",
+   "fieldtype": "Datetime",
+   "label": "Date Stamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "call_recording_url",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Call Recording URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unique_no",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Unique No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_new_ticket",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Is New Ticket",
+   "read_only": 1
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Table",
+   "label": "Details",
+   "options": "DS Ticket Detail"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Contact No./Mobile number"
+  },
+  {
+   "fieldname": "column_break_l1njd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_q9v70",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id"
+  },
+  {
+   "fieldname": "agent_logs_section_section",
+   "fieldtype": "Section Break",
+   "label": "Agent Logs"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-01 09:48:10.075398",
+ "modified_by": "Administrator",
+ "module": "Digital Sewa",
+ "name": "DS Ticket",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
