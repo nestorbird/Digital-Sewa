@@ -1,7 +1,5 @@
 # Digital Sewa
 
-<<<<<<< HEAD
-
 ### Compatibality
 Frappe v13 (all)
 Frappe v14 (all)
@@ -39,6 +37,4 @@ For any further query visit to [Wesbite](https://nestorbird.com/) or contact on 
 [Privacy Policy](https://wiki.nestorbird.com/wiki/strongprivacy-policies-strongbrbr-class=prosemirror-trailingbreak)
 
 #### License
-
 MIT
->>>>>>> ds_rename
