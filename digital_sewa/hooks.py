@@ -195,3 +195,17 @@ default_mail_footer = """
 		
 	</span>
 """
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "Lead-from_ticket"
+				]
+			]
+		}
+	}
+]
