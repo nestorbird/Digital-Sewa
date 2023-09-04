@@ -15,6 +15,17 @@ function randString(x) {
 }
 
 frappe.ui.form.on('DS Ticket', {
+
+    setup(frm) {
+		frm.set_query('license_plate', () => {
+			return {
+				filters: {
+					customer : frm.doc.customer
+				}
+			}
+		})
+	},
+
     refresh: function (frm) {
         console.log("refresh");
         $('.btn-comment').on('click', function () {
@@ -93,5 +104,20 @@ frappe.ui.form.on('DS Ticket', {
         if (!frm.doc.unique_no) {
             frm.set_value("unique_no", randString(16));
         }
-	}
+	},
+
+    customer : frm => {
+		frappe.db.get_value("Customer", frm.doc.customer, ['customer_primary_address'], (address) => {
+            // console.log(address.message)
+            frappe.db.get_doc("Address", address.customer_primary_address).then( r => {
+                frm.set_value('state', r.state);
+                frm.set_value('pincode', r.pincode);
+                frm.set_value('customer_address', r.address_line1 + r.address_line2);
+                frm.set_value('city', r.city);
+                frm.set_value('region', r.country);
+                frm.set_value('email_id', r.email_id);
+                frm.save()
+            })
+        })
+    }
 });

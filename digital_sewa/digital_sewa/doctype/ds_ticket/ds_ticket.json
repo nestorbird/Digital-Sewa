@@ -27,6 +27,15 @@
   "call_recording_url",
   "unique_no",
   "is_new_ticket",
+  "vehicle_info_section",
+  "vehicle_type",
+  "vehicle_model",
+  "column_break_24",
+  "license_plate",
+  "vehicle_engine",
+  "column_break_27",
+  "chassis_number",
+  "vehicle_issue",
   "section_break_q9v70",
   "agent_logs_section_section",
   "details"
@@ -43,8 +52,9 @@
   },
   {
    "fieldname": "customer",
-   "fieldtype": "Data",
-   "label": "Customer"
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
   },
   {
    "fieldname": "customer_address",
@@ -165,11 +175,61 @@
    "fieldname": "create_lead",
    "fieldtype": "Button",
    "label": "Create Lead"
+  },
+  {
+   "fieldname": "vehicle_info_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Info"
+  },
+  {
+   "fetch_from": "license_plate.wheels",
+   "fieldname": "vehicle_type",
+   "fieldtype": "Select",
+   "label": "Vehicle Wheels",
+   "options": "\n1\n2\n3\n4"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "license_plate.chassis_no",
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "label": "Chassis Number"
+  },
+  {
+   "fetch_from": "license_plate.engine_number",
+   "fieldname": "vehicle_engine",
+   "fieldtype": "Data",
+   "label": "Vehicle Engine Number"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_issue",
+   "fieldtype": "Link",
+   "label": "Vehicle Issue",
+   "options": "Vehicle Issue"
+  },
+  {
+   "fieldname": "license_plate",
+   "fieldtype": "Link",
+   "label": "License Plate",
+   "options": "Vehicle Information"
+  },
+  {
+   "fetch_from": "license_plate.model",
+   "fieldname": "vehicle_model",
+   "fieldtype": "Data",
+   "label": "Vehicle Model"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-02 16:27:57.317257",
+ "modified": "2023-09-04 17:37:39.277332",
  "modified_by": "Administrator",
  "module": "Digital Sewa",
  "name": "DS Ticket",
