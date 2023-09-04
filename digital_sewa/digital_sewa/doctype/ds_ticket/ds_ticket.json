@@ -12,7 +12,6 @@
   "customer_address",
   "city",
   "mobile_number",
-  "create_lead",
   "column_break_l1njd",
   "state",
   "pincode",
@@ -172,11 +171,6 @@
    "label": "Agent Logs"
   },
   {
-   "fieldname": "create_lead",
-   "fieldtype": "Button",
-   "label": "Create Lead"
-  },
-  {
    "fieldname": "vehicle_info_section",
    "fieldtype": "Section Break",
    "label": "Vehicle Info"
@@ -229,7 +223,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-04 17:37:39.277332",
+ "modified": "2023-09-04 18:07:28.670376",
  "modified_by": "Administrator",
  "module": "Digital Sewa",
  "name": "DS Ticket",
