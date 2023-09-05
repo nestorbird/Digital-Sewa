@@ -1,5 +1,5 @@
 
-## DigiSewa
+## Digital Sewa
 An app for Dialer support
 ## Features
 
@@ -16,7 +16,7 @@ An app for Dialer support
 Get the app
 
 ```bash
-bench get-app digital_sewa {github_url} --branch main
+bench get-app digital_sewa {github_url} --branch version-14
 ```
 
 Install the digital_sewa app
@@ -33,44 +33,44 @@ Install the digital_sewa app
 Go To Servetel
 
 
-![Logo](https://frappecloud.com/files/19354be.png)
+![Logo](https://digitalsewa.nestorhawk.com/files/1.png)
 
 Copy the token from here and paste it in dialer settings Authorizatiion
 
-![Logo](https://frappecloud.com/files/8%20(1).png.png)
+![Logo](https://digitalsewa.nestorhawk.com/files/8%20(1).png)
 
 Copy the Number from my Number section
 
-![Logo](https://frappecloud.com/files/37ee4ca.png)
+![Logo](https://digitalsewa.nestorhawk.com/files/3.png)
 
 and paste it in caler id
 
-![Logo](readme_images/8%20(1).png)
+![Logo](https://digitalsewa.nestorhawk.com/files/8%20(1).png)
 
 
 Now You can create agents in Servetel
 
-![Logo](readme_images/9.png)
+![Logo](https://wiki.nestorbird.com/files/9.png)
 
 And with same data you also need to create agent in erp side
 
-![Logo](readme_images/5.png)
+![Logo](https://wiki.nestorbird.com/files/5.png)
 
 Now you are good to go when someone call on caller id new DS ticket will be created if exists or else
 it will create new DS ticket
 
-![Logo](readme_images/10.png)
+![Logo](https://wiki.nestorbird.com/files/10.png)
 
 ## Logs
 
 Break Logs
 
-![Logo](readme_images/11.png)
+![Logo](https://wiki.nestorbird.com/files/11.png)
 
 Agent Logs
 
-![Logo](readme_images/12.png)
+![Logo](https://wiki.nestorbird.com/files/12.png)
 
 Webhook Configuration
 
-![Logo](readme_images/13.png)
+![Logo](https://wiki.nestorbird.com/files/13.png)
