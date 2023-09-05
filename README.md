@@ -1,40 +1,76 @@
-# Digital Sewa
 
-### Compatibality
-Frappe v13 (all)
-Frappe v14 (all)
+## DigiSewa
+An app for Dialer support
+## Features
 
-### How to Install
-Refer this [URL](https://frappecloud.com/docs/benches/custom-app#:~:text=follow%20these%20steps%3A-,To%20manage%20your%20bench%2C%20click%20on%20Manage%20Bench%20button%20next,see%20the%20Add%20App%20screen.) for detailed instructions on how to install a third-party app on a Frappe Bench. 
-Short Instructions:
-`$ bench get-app <GIT REPO LINK> --main`
-
-`$ bench --site <SITENAME> install-app digital_sewa`
-
-#### External Pre-requsite
-- Access to [Servertel](https://customer.servetel.in/login) with API features enabled.
-
-#### Internal Pre-requisute
-- Agent Created in Servertel with same created in Digital Sewa (Agent DocType)
-
-### Features
-- Realtime data capturing on Incomming Call
-- Click to Call from Agent screen to Customer
-- Multiple Agent handling
-- Break Management for Agent
-- Break Log of each agent with Report
-- Agent Productivity Report
-- Ticketing Solution extending any ERPNext DocType 
+- Ticket creation on **incoming call**
+- Filtering tickets aginst
+- Agent creation and different status like On Call, On Break
+- Click to call from tickets itself
+- Log generation for every call
 
 
-#### Support
-For any further query visit to [Wesbite](https://nestorbird.com/) or contact on support@nestorbird.com
 
-#### Privacy Policies and Terms
+## Installation
 
-[Terms and Conditions](https://wiki.nestorbird.com/wiki/strongterms-and-conditionsnbsp;-strongbrbr-class=prosemirror-trailingbreak)
+Get the app
 
-[Privacy Policy](https://wiki.nestorbird.com/wiki/strongprivacy-policies-strongbrbr-class=prosemirror-trailingbreak)
+```bash
+bench get-app digital_sewa {github_url} --branch version-14
+```
 
-#### License
-MIT
+Install the digital_sewa app
+
+```bash
+  bench --site{site_name} Install-app digital_sewa
+```
+
+## Configuration
+
+
+
+
+Go To Servetel
+
+
+![Logo](readme_images/1.png)
+
+Copy the token from here and paste it in dialer settings Authorizatiion
+
+![Logo](readme_images/8%20(1).png)
+
+Copy the Number from my Number section
+
+![Logo](readme_images/3.png)
+
+and paste it in caler id
+
+![Logo](readme_images/8%20(1).png)
+
+
+Now You can create agents in Servetel
+
+![Logo](readme_images/9.png)
+
+And with same data you also need to create agent in erp side
+
+![Logo](readme_images/5.png)
+
+Now you are good to go when someone call on caller id new DS ticket will be created if exists or else
+it will create new DS ticket
+
+![Logo](readme_images/10.png)
+
+## Logs
+
+Break Logs
+
+![Logo](readme_images/11.png)
+
+Agent Logs
+
+![Logo](readme_images/12.png)
+
+Webhook Configuration
+
+![Logo](readme_images/13.png)
