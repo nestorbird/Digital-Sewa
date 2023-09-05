@@ -124,7 +124,6 @@ frappe.ui.form.on('DS Ticket', {
                 frm.set_value('customer_address', r.address_line1 + r.address_line2);
                 frm.set_value('city', r.city);
                 frm.set_value('region', r.country);
-                frm.set_value('email_id', r.email_id);
             })
         }
         if(address.message.email_id){
