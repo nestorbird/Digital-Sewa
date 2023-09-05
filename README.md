@@ -16,7 +16,7 @@ An app for Dialer support
 Get the app
 
 ```bash
-bench get-app digital_sewa {github_url} --branch version-14
+bench get-app digital_sewa {github_url} --branch main
 ```
 
 Install the digital_sewa app
