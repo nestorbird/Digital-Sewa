@@ -71,6 +71,15 @@ frappe.ui.form.on('DS Ticket', {
                     frappe.throw("Please Enter the Customer Number")
                 }
         })
+        if (frm.doc.mobile_number){
+            if (!frm.doc.customer){
+               frappe.db.get_value("Customer",{"mobile_no":frm.doc.mobile_number},"name").then(r=>{
+                if (r.message){
+                    frm.set_value("customer",r.message.name)
+            }
+               })
+            }
+        }
         // if (frm.doc.__unsaved) {
             // frm.set_df_property("create_lead", "hidden", 1);
         // }
@@ -107,17 +116,28 @@ frappe.ui.form.on('DS Ticket', {
 	},
 
     customer : frm => {
-		frappe.db.get_value("Customer", frm.doc.customer, ['customer_primary_address'], (address) => {
-            // console.log(address.message)
-            frappe.db.get_doc("Address", address.customer_primary_address).then( r => {
+		frappe.db.get_value("Customer", frm.doc.customer, ['customer_primary_address','email_id']).then(address => {
+            if (address.message.customer_primary_address){
+            frappe.db.get_doc("Address", address.message.customer_primary_address).then( r => {
                 frm.set_value('state', r.state);
                 frm.set_value('pincode', r.pincode);
                 frm.set_value('customer_address', r.address_line1 + r.address_line2);
                 frm.set_value('city', r.city);
                 frm.set_value('region', r.country);
                 frm.set_value('email_id', r.email_id);
-                frm.save()
             })
+        }
+        if(address.message.email_id){
+            frm.set_value('email_id',address.message.email_id)
+        }
         })
     }
 });
+
+frappe.ui.form.on('DS Ticket Detail', {
+    issue_date(frm, cdt, cdn){
+    var row = frappe.model.get_doc(cdt, cdn)
+    frappe.model.set_value(row.doctype,row.name,"attended_by_agent_name",frappe.session.user)
+    refresh_field("details")
+    } 
+})
