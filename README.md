@@ -33,15 +33,15 @@ Install the digital_sewa app
 Go To Servetel
 
 
-![Logo](readme_images/1.png)
+![Logo](https://frappecloud.com/files/19354be.png)
 
 Copy the token from here and paste it in dialer settings Authorizatiion
 
-![Logo](readme_images/8%20(1).png)
+![Logo](https://frappecloud.com/files/8%20(1).png.png)
 
 Copy the Number from my Number section
 
-![Logo](readme_images/3.png)
+![Logo](https://frappecloud.com/files/37ee4ca.png)
 
 and paste it in caler id
 
