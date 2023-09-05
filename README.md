@@ -1,6 +1,7 @@
 
 ## Digital Sewa
-An app for Dialer support
+Ticketing Solution in Frappe and ERPNext along with Voice Service.
+Digital Sewa is extension for any Frappe, ERPNext or Custom App doctype, where DS Ticket can be configured to log call records handled by agent for inbound or outbound calls. This app has integration with 2 Cloud Voice service providers, Servertel and Knowlarity enabling voice call service with Frappe
 ## Features
 
 - Ticket creation on **incoming call**
