@@ -1,0 +1,42 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Vehicle Issue",
+  "issue_type": "Engin Issue",
+  "modified": "2023-09-04 14:21:51.813557",
+  "name": "Engin Issue",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Vehicle Issue",
+  "issue_type": "Battry Issue",
+  "modified": "2023-09-04 14:23:56.334494",
+  "name": "Battry Issue",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Vehicle Issue",
+  "issue_type": "Service Oil issue",
+  "modified": "2023-09-04 14:24:18.815110",
+  "name": "Service Oil issue",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Vehicle Issue",
+  "issue_type": "Shocker issue",
+  "modified": "2023-09-04 14:25:07.765949",
+  "name": "Shocker issue",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ }
+]

@@ -207,5 +207,19 @@ fixtures = [
 				]
 			]
 		}
+	},
+    {
+        "dt": "Vehicle Issue",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "Shocker issue",
+                    "Service Oil issue",
+                    "Battry Issue",
+                    "Engin Issue"
+				]
+			]
+		}
 	}
 ]
