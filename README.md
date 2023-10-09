@@ -26,15 +26,13 @@ Short Instructions:
 - Agent Productivity Report
 - Ticketing Solution extending any ERPNext DocType 
 
+## Contributing
+- [Issue Guidelines](https://github.com/frappe/erpnext/wiki/Issue-Guidelines)
+- [Pull Request Requirements](https://github.com/frappe/erpnext/wiki/Contribution-Guidelines)
 
-#### Support
-For any further query visit to [Wesbite](https://nestorbird.com/) or contact on support@nestorbird.com
+## License
+                                  
+[GNU General Public License (v3)](https://github.com/nestorbird/Digital-Sewa/blob/digital-sewa-support/license.txt)
 
-#### Privacy Policies and Terms
-
-[Terms and Conditions](https://wiki.nestorbird.com/wiki/strongterms-and-conditionsnbsp;-strongbrbr-class=prosemirror-trailingbreak)
-
-[Privacy Policy](https://wiki.nestorbird.com/wiki/strongprivacy-policies-strongbrbr-class=prosemirror-trailingbreak)
-
-#### License
-MIT
+## Support
+For support please visit or click [here](https://wiki.nestorbird.com/wiki/support)
