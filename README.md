@@ -8,7 +8,7 @@ This app provides extended ticketing solution on ERPNext or any other App build 
 
 ## License
                                   
-[GNU General Public License (v3)](https://github.com/nestorbird/Digital-Sewa/blob/digital-sewa-support/license.txt)
+[GNU General Public License (v3)](https://github.com/nestorbird/Digital-Sewa/blob/digital-sewa-lead/license.txt)
 
 ## Support
 For support please visit or click [here](https://wiki.nestorbird.com/wiki/support)
