@@ -187,3 +187,28 @@ def trigger():
     doc.body = data
     doc.save()
     return
+
+
+
+@frappe.whitelist()
+def workspace_to_ds(unique_no,mobile_number,user):
+    if not unique_no:
+        return failed_response(message="Please Provide Unique Number")
+    if not mobile_number:
+        return failed_response(message="Please Provide Mobile Number")
+    filter = {"mobile_number": mobile_number}
+    if (len(frappe.get_all("DS Ticket", filters=filter)) > 0):
+        datas = {"url": "Already Exist", "mobile_number": mobile_number,
+                "unique_no": unique_no,
+                "message": "Tickets found against this customer number."}
+    else:
+        new_dialer_support = frappe.new_doc("DS Ticket")
+        new_dialer_support.unique_no = unique_no
+        new_dialer_support.mobile_number = mobile_number
+        new_dialer_support.is_new_ticket = 1
+        new_dialer_support.save(ignore_permissions=True)
+        frappe.db.commit()
+        url = str(frappe.utils.get_url()) + "/app/ds-ticket/" + new_dialer_support.name
+        datas = {"url": url,"ds_ticket":new_dialer_support.name,
+                "unique_no": new_dialer_support.unique_no, "message": "Redirecting to Incoming Call..."}
+    return datas

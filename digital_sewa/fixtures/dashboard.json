@@ -1,0 +1,112 @@
+[
+ {
+  "cards": [
+   {
+    "card": "Open Ticket",
+    "parent": "Agent Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Closed Ticket",
+    "parent": "Agent Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Daily Break Count",
+    "parent": "Agent Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Call Count",
+    "parent": "Agent Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Monthly Call Count",
+    "parent": "Agent Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   }
+  ],
+  "chart_options": null,
+  "charts": [
+   {
+    "chart": "Agent Call Graph",
+    "parent": "Agent Board",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Full"
+   }
+  ],
+  "dashboard_name": "Agent Board",
+  "docstatus": 0,
+  "doctype": "Dashboard",
+  "is_default": 0,
+  "is_standard": 0,
+  "modified": "2023-11-16 09:13:20.222396",
+  "module": null,
+  "name": "Agent Board",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "cards": [
+   {
+    "card": "Open Ticket",
+    "parent": "Manager Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Closed Ticket",
+    "parent": "Manager Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Daily Break Count",
+    "parent": "Manager Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Call Count",
+    "parent": "Manager Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   },
+   {
+    "card": "Monthly Call Count",
+    "parent": "Manager Board",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   }
+  ],
+  "chart_options": null,
+  "charts": [
+   {
+    "chart": "Agent Call Graph",
+    "parent": "Manager Board",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Full"
+   }
+  ],
+  "dashboard_name": "Manager Board",
+  "docstatus": 0,
+  "doctype": "Dashboard",
+  "is_default": 0,
+  "is_standard": 0,
+  "modified": "2023-11-16 09:27:49.640158",
+  "module": null,
+  "name": "Manager Board",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ }
+]

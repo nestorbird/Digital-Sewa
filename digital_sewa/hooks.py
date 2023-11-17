@@ -221,5 +221,61 @@ fixtures = [
 				]
 			]
 		}
-	}
+	},
+	{
+        "dt": "Role",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "Digital Sewa Agent",
+					"Digital Sewa Manager",
+					"DS Admin"
+				]
+			]
+		}
+	},
+	{
+        "dt": "Workspace",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "DS Manager",
+					"DS Agent"
+				]
+			]
+		}
+	},
+	{
+        "dt": "Dashboard",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "Manager Board",
+					"Agent Board"
+				]
+			]
+		}
+	},
+	{
+        "dt": "Module Profile",
+        "filters": {
+            "name": [
+                "in",
+                [
+                    "DS Manager",
+					"DS Agent"
+				]
+			]
+		}
+	},
 ]
+
+
+
+
+
+
+
