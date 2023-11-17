@@ -81,21 +81,6 @@ function codeAddress() {
       } 
         
         const params = window.location.origin
-        this.reportbutton = $(`
-        <div class="dropdown">
-  <button style="padding: 7px; margin: 6px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    MIS Reports
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a id = "login_report" class="dropdown-item" href="/app/query-report/Login Logout Report">Login Logout Report</a>
-    <a id = "agent_productive" class="dropdown-item" href="/app/query-report/Agent Productivity";>Agent Productivity</a>
-    <a id = "raw_dump" class="dropdown-item" href="/app/query-report/Raw Dump">Raw Dump</a>
-    <a id = "ticket_sla" class="dropdown-item" href="/app/query-report/Ticket SLA">Ticket SLA</a>
-    <a id = "ticket_report" class="dropdown-item" href="/app/query-report/Ticket Summary Report">Ticket Summary Report</a>
-  </div>
-</div>
-        
-        `).insertAfter($('.dropdown-help'))
         $('#login_report').click(function () {
             window.location = params + "/app/query-report/" + "Login Logout Report";
         });
@@ -117,6 +102,28 @@ function codeAddress() {
 
 window.onload = codeAddress;
 $(document).ready(function () {
+    let route = frappe.get_route()
+    if ((route[0]==="Workspaces" || route[0]==="") && (frappe.user.has_role("Digital Sewa Agent"))){
+        setTimeout(()=>{
+            frappe.call({
+                method: "digital_sewa.dialer_integration.dialer_call_api.workspace_to_ds",
+                args: {
+                        unique_no: 11111,
+                        mobile_number: "+919876543210",
+                        user:frappe.session.user
+                },
+                callback: function (r) {
+                    console.log("testing", r)
+                    frappe.msgprint(r.message.message);
+                    if (r.message.url === "Already Exist") {
+                        frappe.set_route("List", "DS Ticket", { mobile_number: r.message.mobile_number });
+                    } else {
+                        frappe.set_route("Form", "DS Ticket", r.message.ds_ticket);
+                    }
+                }
+            });
+        },10000)
+    }
     
     // hide search bar
     // document.getElementsByClassName('search-bar')[0].style.visibility = 'hidden';
@@ -210,9 +217,9 @@ $(document).ready(function () {
     });
 
 
-    document.getElementsByClassName("navbar-brand ")[0].onclick = function () {
-        document.getElementsByClassName("navbar-brand ")[0].href = "/app/ds-ticket";
-    };
+    // document.getElementsByClassName("navbar-brand ")[0].onclick = function () {
+    //     document.getElementsByClassName("navbar-brand ")[0].href = "/app/ds-ticket";
+    // };
     // setInterval(my_alert_func, 4000); // Set to 3 seconds
     // function my_alert_func() {
     //     frappe.db.get_value("User", {"name": frappe.session.user}, "availability_status", (r) => {
