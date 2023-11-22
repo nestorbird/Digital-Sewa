@@ -10,7 +10,7 @@ function codeAddress() {
         console.log("res",typeof(res.message))
         if (res.message==true){
             $(".dropdown-help").replaceWith(`
-            <a class="nav-link" style="margin: auto; box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190);" data-toggle="dropdown" href="#" onclick="return false;">On Call
+            <a class="nav-link" style="margin: auto; box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190); margin-left: -739px;" data-toggle="dropdown" href="#" onclick="return false;">On Call
             `)
 
         }
@@ -41,13 +41,13 @@ function codeAddress() {
         }
         $(".dropdown-help").replaceWith(`
         <li class="nav-item dropdown dropdown-help dropdown-mobile d-none d-lg-block">
-        <button class="btn btn-default icon-btn" style="padding: 5px">
-      <a class="nav-link" data-toggle="dropdown" href="#" onclick="return false;">Take Break
+        <button class="btn btn-default icon-btn text-left" style="padding: 5px;align-self: center;align-self: 57normal;margin-left: -514px;">
+        <a class="nav-link" data-toggle="dropdown" href="#" onclick="return false;">Take Break
       <span>
               <svg class="icon icon-xs"><use href="#icon-small-down"> </use> </svg>
       </span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" id="toolbar-help" role="menu">
+      <div class="dropdown-menu dropdown-menu-right" id="toolbar-help" role="menu" style="margin-right: 413px;">
       <div id="help-links"></div>
              <div class="dropdown-divider documentation-links" style="display: none;"></div> 
              ${break_link}
@@ -58,7 +58,7 @@ function codeAddress() {
       }
       else{
         $(".dropdown-help").replaceWith(`
-        <a class="nav-link" style="margin: auto; box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190);" data-toggle="dropdown" href="#" onclick="
+        <a class="nav-link" style="margin: auto;box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(37, 150, 190);margin-left: -674px;" data-toggle="dropdown" href="#" onclick="
          frappe.call({
                 method: 'digital_sewa.digital_sewa.doctype.ds_ticket.ds_ticket.pause_unpause_client',
                 args: {
@@ -77,7 +77,7 @@ function codeAddress() {
          ;">End Break
          `);
         
-
+        
       } 
         
         const params = window.location.origin

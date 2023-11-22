@@ -48,3 +48,18 @@ input[type=checkbox]:checked:before {
   flex: 0 !important;
   overflow: visible;
 }
+
+.avatar-frame.standard-image {
+    margin-left: 219px;
+}
+
+
+
+
+li.nav-item.dropdown.dropdown-notifications.dropdown-mobile {
+    display: none;
+}
+
+.avatar-frame.standard-image {
+    margin-left: 205px;
+}
