@@ -275,7 +275,9 @@ fixtures = [
 
 
 
-
+sounds = [
+    {"name": "custom_sound", "src": "/assets/digital_sewa/sounds/ringtone-for-mobile-phone-with-cheerful-mood-133355.mp3", "volume": 0.2},
+]
 
 
 

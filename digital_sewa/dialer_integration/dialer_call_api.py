@@ -5,6 +5,7 @@ import string
 import random
 from digital_sewa.utils import success_response, failed_response
 
+
 @frappe.whitelist(allow_guest=True)
 def data_feed():
     return None
@@ -200,7 +201,8 @@ def workspace_to_ds(unique_no,mobile_number,user):
     if (len(frappe.get_all("DS Ticket", filters=filter)) > 0):
         datas = {"url": "Already Exist", "mobile_number": mobile_number,
                 "unique_no": unique_no,
-                "message": "Tickets found against this customer number."}
+                "message": f"Redirecting to Incoming Call, {mobile_number}"}
+            
     else:
         new_dialer_support = frappe.new_doc("DS Ticket")
         new_dialer_support.unique_no = unique_no
@@ -210,5 +212,16 @@ def workspace_to_ds(unique_no,mobile_number,user):
         frappe.db.commit()
         url = str(frappe.utils.get_url()) + "/app/ds-ticket/" + new_dialer_support.name
         datas = {"url": url,"ds_ticket":new_dialer_support.name,
-                "unique_no": new_dialer_support.unique_no, "message": "Redirecting to Incoming Call..."}
+                "unique_no": new_dialer_support.unique_no, "message": f"Redirecting to Incoming Call, {new_dialer_support.mobile_number}"}
+        frappe.publish_realtime("custom_call_sound", user='user')
     return datas
+
+
+
+
+
+
+
+
+
+
