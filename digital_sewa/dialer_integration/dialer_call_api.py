@@ -218,10 +218,26 @@ def workspace_to_ds(unique_no,mobile_number,user):
 
 
 
+@frappe.whitelist()
+def save_incoming_call(mobile_number, csrf_token):
+    existing_entry = frappe.get_all(
+        "Incoming Call Demo",
+        filters={
+            "csrf_token": csrf_token
+        },
+        fields=["name"]
+    )
 
+    if not existing_entry:
+        incoming_call = frappe.get_doc({
+            "doctype": "Incoming Call Demo",
+            "mobile_number": mobile_number,
+            "csrf_token": csrf_token
+        })
 
-
-
-
+        incoming_call.insert(ignore_permissions=True)
+        return "New Incoming Call saved successfully"
+    else:
+        return "CSRF token already exists in Incoming Call"
 
 
