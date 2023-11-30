@@ -1,3 +1,4 @@
+
 function codeAddress() {
     this.homebutton = $(".dropdown-message").replaceWith(``)
     $("#toolbar-user").append(`<a class="dropdown-item" href="/app/user">           Users
@@ -102,28 +103,88 @@ function codeAddress() {
 
 window.onload = codeAddress;
 $(document).ready(function () {
-    let route = frappe.get_route()
-    if ((route[0]==="Workspaces" || route[0]==="") && (frappe.user.has_role("Digital Sewa Agent"))){
-        setTimeout(()=>{
-            frappe.call({
-                method: "digital_sewa.dialer_integration.dialer_call_api.workspace_to_ds",
-                args: {
-                        unique_no: 11111,
-                        mobile_number: "+919876543210",
-                        user:frappe.session.user
+    let route = frappe.get_route();
+    if ((route[0] === "Workspaces" || route[0] === "") && (frappe.user.has_role("Digital Sewa Agent"))) {
+        let csrf = frappe.csrf_token;
+        if (csrf) {
+            frappe.db.get_list("Incoming Call Demo", {
+                filters: {
+                    "csrf_token": csrf
                 },
-                callback: function (r) {
-                    console.log("testing", r)
-                    frappe.msgprint(r.message.message);
-                    if (r.message.url === "Already Exist") {
-                        frappe.set_route("List", "DS Ticket", { mobile_number: r.message.mobile_number });
-                    } else {
-                        frappe.set_route("Form", "DS Ticket", r.message.ds_ticket);
-                    }
+                limit: 1
+            }).then(function (result) {
+                if (result.length > 0) {
+                    // CSRF token already exists, no  prompt
+                    console.log("CSRF token already exists in Incoming Call");
+                } else {
+                    Shownumberprompt();
                 }
             });
-        },10000)
+        }
     }
+    function Shownumberprompt() {
+        frappe.prompt([
+            {
+                label: __("Number"),
+                fieldname: "user_number",
+                fieldtype: "Data",
+                reqd: true,
+            }
+        ], function (values) {
+            let userNumber = values.user_number;
+            console.log(userNumber);
+
+            frappe.call({
+                method: "digital_sewa.dialer_integration.dialer_call_api.save_incoming_call",
+                args: {
+                    mobile_number: userNumber,
+                    csrf_token: frappe.csrf_token
+                },
+                callback: function (r) {
+                    console.log("Incoming Call Saved:", r);
+                }
+            });
+
+            frappe.call({
+                method: "digital_sewa.hook.dialaer_api.dial_call",
+                args: {
+                    mobile_number: userNumber
+                },
+                callback: function (r) {
+                    console.log(r.message);
+                    console.log("API Response:", r);
+                }
+            });
+        }, __("Enter Your Number"));
+    }
+    setTimeout(() => {
+        frappe.call({
+            method: "digital_sewa.dialer_integration.dialer_call_api.workspace_to_ds",
+            args: {
+                unique_no: 11111,
+                mobile_number: "+919876543210",
+                user: frappe.session.user
+            },
+            callback: function (r) {
+                console.log("testing", r)
+                frappe.msgprint(r.message.message);
+                if (r.message.url === "Already Exist") {
+                    frappe.set_route("List", "DS Ticket", { mobile_number: r.message.mobile_number });
+                    // custom call sound
+                    playCustomCallSound();
+                } else {
+                    frappe.set_route("Form", "DS Ticket", r.message.ds_ticket);
+                    // custom call sound
+                    playCustomCallSound();
+                }
+            }
+        });
+    }, 18000);
+
+    function playCustomCallSound() {
+        frappe.utils.play_sound("custom_sound");
+    }   
+
     
     // hide search bar
     // document.getElementsByClassName('search-bar')[0].style.visibility = 'hidden';
@@ -233,3 +294,4 @@ $(document).ready(function () {
     //     });
     // }
 });
+
