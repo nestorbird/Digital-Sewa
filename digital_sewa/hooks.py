@@ -253,8 +253,7 @@ fixtures = [
             "name": [
                 "in",
                 [
-                    "Manager Board",
-					"Agent Board"
+					"DS Dashboard"
 				]
 			]
 		}

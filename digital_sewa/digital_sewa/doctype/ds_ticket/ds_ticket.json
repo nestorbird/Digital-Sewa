@@ -13,6 +13,7 @@
   "city",
   "mobile_number",
   "column_break_l1njd",
+  "ds_ticket_status",
   "state",
   "pincode",
   "region",
@@ -219,11 +220,18 @@
    "fieldname": "vehicle_model",
    "fieldtype": "Data",
    "label": "Vehicle Model"
+  },
+  {
+   "default": "In Action",
+   "fieldname": "ds_ticket_status",
+   "fieldtype": "Select",
+   "label": "DS Ticket Status",
+   "options": "In Action\nPending Action\nCompleted"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-04 18:07:28.670376",
+ "modified": "2023-12-03 19:05:59.500812",
  "modified_by": "Administrator",
  "module": "Digital Sewa",
  "name": "DS Ticket",
