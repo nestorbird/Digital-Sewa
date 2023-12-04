@@ -238,6 +238,9 @@ def save_incoming_call(mobile_number, csrf_token):
         incoming_call.insert(ignore_permissions=True)
         return "New Incoming Call saved successfully"
     else:
+        icd = frappe.get_doc("Incoming Call Demo", {"csrf_token": csrf_token})
+        icd.mobile_number = mobile_number
+        icd.save()
         return "CSRF token already exists in Incoming Call"
 
 
